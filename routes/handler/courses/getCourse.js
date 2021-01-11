@@ -3,7 +3,8 @@ const {
     Chapter,
     Review,
     Lesson,
-    ImageCourse
+    ImageCourse,
+    MyCourse
 } = require('../../../models');
 
 module.exports = async (req, res) => {
@@ -27,6 +28,7 @@ module.exports = async (req, res) => {
             }
 
          },
+
          {
              model: ImageCourse,
              attributes: ['id', 'image']
@@ -36,7 +38,19 @@ module.exports = async (req, res) => {
         
     });
 
+    /* const amount = await Project.count({
+        where: {
+          id: {
+            [Op.gt]: 25
+          }
+        }
+      }); */
 
+    const totalStudent = await MyCourse.count({
+        where: {
+            courseId: id
+        }
+    });
 
     if(!course) {
         return res.status(404).json({
@@ -47,7 +61,8 @@ module.exports = async (req, res) => {
 
     return res.json({
         status: 'success',
-        data: course
+        data: course, 
+              totalStudent
     });
 
 }

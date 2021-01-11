@@ -74,13 +74,10 @@ module.exports = (sequelize, DataTypes) => {
     Course.associate = function(models) {
       Course.hasMany(models.Review, {as: 'reviews'});
       Course.hasMany(models.Chapter, {as: 'chapters'});
-      Course.hasOne(models.ImageCourse);
+      Course.hasMany(models.ImageCourse);
       //Person.hasOne(Person, {as: 'Father'})
     }
 
-   // Course.associate = function(models) {
-    //  Course.hasMany(models.Chapter, {as: 'chapters'})
-    //}
     
     
 

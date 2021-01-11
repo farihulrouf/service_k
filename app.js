@@ -11,6 +11,9 @@ const chapterRouter = require('./routes/chapters');
 const reviewRouter = require('./routes/reviews');
 const lessonRouter = require('./routes/lessons');
 const imgCourseRouter = require('./routes/imgcourses');
+const myCourseRouter = require('./routes/mycourses');
+
+
 const app = express();
 
 app.use(logger('dev'));
@@ -27,5 +30,6 @@ app.use('/chapters', chapterRouter);
 app.use('/reviews', reviewRouter);
 app.use('/lessons', lessonRouter);
 app.use('/imgcourses', imgCourseRouter);
+app.use('/mycourses', myCourseRouter);
 
 module.exports = app;
