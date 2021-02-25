@@ -11,7 +11,8 @@ module.exports = async (req, res) => {
     const id = req.params.id;
 
     const course = await Course.findByPk(id, {
-        attributes: ['id', 'name', 'type', 'thumbnail', 'price', 'level'],
+        attributes: ['id', 'name', 'type', 'thumbnail', 'price', 'description',
+        'certificate', 'level'],
 
 
         include: [
@@ -38,19 +39,14 @@ module.exports = async (req, res) => {
         
     });
 
-    /* const amount = await Project.count({
-        where: {
-          id: {
-            [Op.gt]: 25
-          }
-        }
-      }); */
-
     const totalStudent = await MyCourse.count({
         where: {
             courseId: id
         }
     });
+
+    //course['totalStudent'] = totalStudent;
+    //course.push(totalStudent); //ruits.push("Kiwi");
 
     if(!course) {
         return res.status(404).json({
@@ -59,10 +55,11 @@ module.exports = async (req, res) => {
         });
     }
 
+    //console.log("hello");
+
     return res.json({
         status: 'success',
-        data: course, 
-              totalStudent
+        data: course
     });
 
 }
