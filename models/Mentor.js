@@ -43,5 +43,13 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: true
     });
 
+
+
+    Mentor.associate = function(models) {
+      Mentor.hasMany(models.Course, {as: 'course'});
+      
+      //Person.hasOne(Person, {as: 'Father'})
+    }
+
     return Mentor;
 }

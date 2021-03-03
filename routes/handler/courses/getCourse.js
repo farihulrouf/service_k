@@ -4,7 +4,8 @@ const {
     Review,
     Lesson,
     ImageCourse,
-    MyCourse
+    MyCourse,
+    Mentor
 } = require('../../../models');
 
 module.exports = async (req, res) => {
@@ -29,6 +30,12 @@ module.exports = async (req, res) => {
             }
 
          },
+         {
+            model: Mentor,
+            attributes: ['id', 'name', 'profile', 'profession']
+         },
+
+        
 
          {
              model: ImageCourse,

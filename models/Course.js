@@ -75,6 +75,9 @@ module.exports = (sequelize, DataTypes) => {
       Course.hasMany(models.Review, {as: 'reviews'});
       Course.hasMany(models.Chapter, {as: 'chapters'});
       Course.hasMany(models.ImageCourse);
+
+      Course.belongsTo(models.Mentor, {foreignKey: 'mentorId'});
+
       //Person.hasOne(Person, {as: 'Father'})
     }
 
